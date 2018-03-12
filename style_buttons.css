@@ -1,0 +1,54 @@
+.container {
+	margin: auto;
+	width: 600px;
+	height: 400px;
+	display: flex;
+	}
+
+#carousel {
+	margin: auto;
+	width: 600px;
+	height: 400px;
+	overflow: hidden;
+	position: relative;	
+}
+
+ul {
+	all: unset;	
+	width: 3000px;
+	float: left;
+	font-size: 0;
+}
+
+li {
+	width: 600px;
+	height: 400px;
+	list-style: none;
+	display: inline;
+}
+
+.navBox {
+	width: 600px;
+	height: 400px;
+	display: flex;
+	justify-content: space-between;
+	position: absolute;
+}
+
+i.fas {
+	color: #fff;
+	font-size: 60px;	
+}
+
+.btn {
+	display:flex;
+	width: 100px;
+	height: 400px;
+	align-items: center;
+	justify-content: center;
+}
+
+.btn:hover {
+	cursor: pointer;
+	background-color: rgba(99, 99, 99, 0.3);
+}
