@@ -1,45 +1,49 @@
 $(function(){
 	var carouselList = $("#carousel ul");
-		//moveSlideLeft = document.getElementById('btn_left'),
-		//moveSlideRight = document.getElementById('btn_right');
 
 	function changeSlide(){
-		carouselList.animate({'marginLeft':-600}, 500, moveFirstSlideL);
+		carouselList.animate({'marginLeft':-600}, 500, moveForwardSlide)
 	};
 
-	setInterval(changeSlide, 5000);
-
-	function moveFirstSlideL(){
+	var carouselAuto = setInterval(changeSlide, 3000);
+	
+	function moveForwardSlide(){
 		var firstItem = carouselList.find("li:first");
 		var lastItem = carouselList.find("li:last");
 		lastItem.after(firstItem);
-		carouselList.css({marginLeft:0});
-
-	}
-
-		function moveFirstSlideR(){
-		var firstItem = carouselList.find("li:first");
-		var lastItem = carouselList.find("li:last");
-		firstItem.after(lastItem);
-		carouselList.css({marginLeft:-600});
-
-	}
-
-	function changeSlideRight(){
-		carouselList.animate({'marginLeft':600}, 500, moveFirstSlide);
+		carouselList.css({'marginLeft': 0});
 	};
 
-	$('#btn_left').click(function() {
-		var leftMove = carouselList.css({'marginLeft': -600}) + 600;
-		carouselList.animate({'marginLeft': leftMove}, 500, moveFirstSlideL);
-});
+	function moveBackSlide(){
+		var firstItem = carouselList.find("li:first");
+		var lastItem = carouselList.find("li:last");
+		firstItem.before(lastItem);
+		carouselList.css({'marginLeft' : 0});
+	};
 
-		$('#btn_right').click(function() {
-		var rightMove = carouselList.css({'marginLeft': -600}) - 600;
-		carouselList.animate({'marginLeft': rightMove}, 500, moveFirstSlideR);
-});
 
-	//moveSlideLeft.addEventListener('click', changeSlide);
-	//moveSlideRight.addEventListener('click', changeSlideRight);
+	$('#btn_right').click(function(){
+		var leftMove = parseInt(carouselList.css('marginLeft')) - 600;
+		carouselList.animate({'marginLeft' : leftMove}, 500, moveForwardSlide);
+	});
+
+
+	$('#btn_left').click(function(){
+		var rightMove = parseInt(carouselList.css('marginLeft')) + 600;
+		carouselList.animate({'marginLeft' : rightMove}, 500, moveBackSlide);
+	});
+
+	function stopCarousel() {
+			clearInterval(carouselAuto);
+		};
+
+	function startCarousel(){
+			carouselAuto = setInterval(changeSlide, 3000);
+		};
+
+	$('#btn_left').hover(stopCarousel, startCarousel);
+
+	$('#btn_right').hover(stopCarousel, startCarousel);
+
 
 });

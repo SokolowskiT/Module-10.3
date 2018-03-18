@@ -1,29 +1,34 @@
+* {
+	box-sizing: border-box;
+}
+
 .container {
 	margin: auto;
 	width: 600px;
 	height: 400px;
 	display: flex;
-	}
+	position: relative;	
+}
 
 #carousel {
 	margin: auto;
 	width: 600px;
 	height: 400px;
 	overflow: hidden;
-	position: relative;	
 }
 
 ul {
-	all: unset;	
+	padding: 0;
 	width: 3000px;
 	float: left;
 	font-size: 0;
+	left: 0;
+	list-style: none;
 }
 
 li {
 	width: 600px;
 	height: 400px;
-	list-style: none;
 	display: inline;
 }
 
